@@ -40,6 +40,40 @@ var expertSystems = []*ExpertSystem{
 	},
 }
 
+var rules = []string{
+	`(defrule expert-system-candidate
+		(object (is-a Project) (name ?projname)
+			(Logic NONLINEAR)
+		)
+	=>
+		(send ?projname put-IsExpertSystemCandidate TRUE)
+	)`,
+	`(defrule choose-free
+		(declare (salience 200))
+		(object (is-a Project) (name ?projname)
+			(IsExpertSystemCandidate TRUE)
+			(PreferredShell [nil])
+			(Languages $? ?lang $?)
+		)
+	=> 
+		(send ?projname put-PreferredShell ?shell)
+	)`,
+	`(defrule choose-commercial
+		(declare (salience 100))
+		(object (is-a Project) (name ?projname)
+			(IsExpertSystemCandidate TRUE)
+			(PreferredShell [nil])
+			(Languages $? ?lang $?)
+		)
+		(object (is-a ExpertSystem) (name ?shell)
+			(License COMMERCIAL)
+			(Languages $? ?lang $?)
+		)
+	=>
+		(send ?projname put-PreferredShell ?shell)
+	)`,
+}
+
 // ExpertSystem is a candidate expert system
 type ExpertSystem struct {
 	Name     string
@@ -72,6 +106,17 @@ func buildEnvironment(env *clips.Environment) error {
 	)`)
 	if err != nil {
 		return err
+	}
+	return nil
+}
+
+func insertRules(env *clips.Environment) error {
+	for i := 0; i < len(rules); i++ {
+		rule := rules[i]
+		err := env.Build(rule)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
