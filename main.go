@@ -65,5 +65,16 @@ func insertExpertSystems(env *clips.Environment) error {
 	return nil
 }
 
+func buildEnvironment(env *clips.Environment) error {
+	err := env.Build(`(
+	defmessage-handler ExpertSystem add-go-support ())
+		(send ?self put-languages (create$ self:Languages Go)
+	)`)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func main() {
 }
