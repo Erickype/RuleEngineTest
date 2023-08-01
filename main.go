@@ -13,8 +13,36 @@ const (
 	NonLinear   clips.Symbol = "NONLINEAR"
 )
 
+var expertSystems = []*ExpertSystem{
+	{
+		Name:     "Clips",
+		License:  Free,
+		Language: []clips.Symbol{"Python", "C"},
+	},
+	{
+		Name:     "Prolog",
+		License:  Free,
+		Language: []clips.Symbol{"Prolog"},
+	}, {
+		Name:     "Jess",
+		License:  Free,
+		Language: []clips.Symbol{"Java"},
+	},
+	{
+		Name:     "Drools",
+		License:  Free,
+		Language: []clips.Symbol{"Java"},
+	},
+	{
+		Name:     "Shine",
+		License:  Dubious,
+		Language: []clips.Symbol{"C"},
+	},
+}
+
 // ExpertSystem is a candidate expert system
 type ExpertSystem struct {
+	Name     string
 	License  clips.Symbol   `json:"license"`
 	Language []clips.Symbol `json:"language"`
 }
@@ -25,6 +53,16 @@ type Project struct {
 	Language                []clips.Symbol
 	IsExpertSystemCandidate bool
 	PreferredShell          *ExpertSystem
+}
+
+func insertExpertSystems(env *clips.Environment) error {
+	for _, system := range expertSystems {
+		_, err := env.Insert(system.Name, &system)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func main() {
