@@ -2,17 +2,29 @@ module github.com/Erickype/RuleEnginesTest
 
 go 1.20
 
-require github.com/keysight/clipsgo v0.0.0-20200916214512-ed6292fa672e
+require github.com/hyperjumptech/grule-rule-engine v1.13.0
 
 require (
-	github.com/alecthomas/chroma v0.7.2 // indirect
-	github.com/c-bata/go-prompt v0.2.3 // indirect
-	github.com/dlclark/regexp2 v1.1.6 // indirect
-	github.com/mattn/go-colorable v0.1.6 // indirect
-	github.com/mattn/go-isatty v0.0.12 // indirect
-	github.com/mattn/go-runewidth v0.0.9 // indirect
-	github.com/mattn/go-tty v0.0.3 // indirect
-	github.com/pkg/term v0.0.0-20190109203006-aa71e9d9e942 // indirect
+	github.com/antlr/antlr4/runtime/Go/antlr v0.0.0-20220527190237-ee62e23da966 // indirect
+	github.com/bmatcuk/doublestar v1.3.2 // indirect
+	github.com/emirpasic/gods v1.12.0 // indirect
+	github.com/google/go-cmp v0.4.0 // indirect
+	github.com/google/uuid v1.1.1 // indirect
+	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
+	github.com/kevinburke/ssh_config v0.0.0-20190725054713-01f96b0aa0cd // indirect
+	github.com/mitchellh/go-homedir v1.1.0 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
+	github.com/sergi/go-diff v1.0.0 // indirect
+	github.com/sirupsen/logrus v1.8.1 // indirect
+	github.com/src-d/gcfg v1.4.0 // indirect
+	github.com/xanzy/ssh-agent v0.2.1 // indirect
+	go.uber.org/atomic v1.7.0 // indirect
+	go.uber.org/multierr v1.6.0 // indirect
+	go.uber.org/zap v1.21.0 // indirect
+	golang.org/x/crypto v0.1.0 // indirect
+	golang.org/x/net v0.5.0 // indirect
 	golang.org/x/sys v0.4.0 // indirect
-	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
+	gopkg.in/src-d/go-billy.v4 v4.3.2 // indirect
+	gopkg.in/src-d/go-git.v4 v4.13.1 // indirect
+	gopkg.in/warnings.v0 v0.1.2 // indirect
 )
